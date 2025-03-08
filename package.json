@@ -22,10 +22,12 @@
         "test": "npm run test"
     },
     "dependencies": {
-        "@fastify/websocket": "^8.0.0",
-        "fastify": "^5.2.1"
+        "@fastify/websocket": "^7.0.0",
+        "fastify": "^4.16.0",
+        "vite-plugin-static-copy": "^2.3.0"
     },
     "devDependencies": {
+        "@types/ws": "^8.18.0",
         "concurrently": "^8.2.2",
         "eslint": "^9.22.0",
         "eslint-plugin-react": "^7.37.4",
