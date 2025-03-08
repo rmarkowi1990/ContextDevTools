@@ -1,0 +1,28 @@
+{
+  "name": "contextdevtools",
+  "version": "1.0.0",
+  "description": "Chrome Extension for useContext State",
+  "homepage": "https://github.com/rmarkowi1990/ContextDevTools#readme",
+  "bugs": {
+    "url": "https://github.com/rmarkowi1990/ContextDevTools/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmarkowi1990/ContextDevTools.git"
+  },
+  "license": "MIT",
+  "author": "Rick Markowitz",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx tsx  Server/server.ts",
+    "test": "npm run test"
+
+  },
+  "dependencies": {
+    "fastify": "^5.2.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  }
+}
