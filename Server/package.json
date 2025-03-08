@@ -1,0 +1,12 @@
+{
+    "name": "@contextdevtools/server",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "start": "tsx server.ts"
+    },
+    "dependencies": {
+        "fastify": "^5.2.1",
+        "@fastify/websocket": "^8.0.0"
+    }
+}

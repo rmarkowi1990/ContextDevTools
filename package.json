@@ -1,34 +1,37 @@
 {
-  "name": "contextdevtools",
-  "version": "1.0.0",
-  "description": "Chrome Extension for useContext State",
-  "homepage": "https://github.com/rmarkowi1990/ContextDevTools#readme",
-  "bugs": {
-    "url": "https://github.com/rmarkowi1990/ContextDevTools/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rmarkowi1990/ContextDevTools.git"
-  },
-  "license": "MIT",
-  "author": "Rick Markowitz",
-  "type": "module",
-  "main": "index.js",
-  "scripts": {
-    "start": "npx tsx  Server/server.ts",
-    "test": "npm run test"
-  },
-  "dependencies": {
-    "@fastify/websocket": "^11.0.2",
-    "fastify": "^5.2.1"
-  },
-  "devDependencies": {
-    "@types/ws": "^8.18.0",
-    "eslint": "^9.22.0",
-    "eslint-plugin-react": "^7.37.4",
-    "globals": "^16.0.0",
-    "prettier": "3.5.3",
-    "typescript": "^5.8.2",
-    "typescript-eslint": "^8.26.0"
-  }
+    "name": "contextdevtools",
+    "version": "1.0.0",
+    "description": "Chrome Extension for useContext State",
+    "homepage": "https://github.com/rmarkowi1990/ContextDevTools#readme",
+    "bugs": {
+        "url": "https://github.com/rmarkowi1990/ContextDevTools/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rmarkowi1990/ContextDevTools.git"
+    },
+    "license": "MIT",
+    "author": "Rick Markowitz",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "start:server": "npx tsx Server/server.ts",
+        "start:extension": "cd Extension && npm run dev",
+        "build:extension": "cd Extension && npm run build",
+        "dev": "concurrently \"npm run start:server\" \"npm run start:extension\"",
+        "test": "npm run test"
+    },
+    "dependencies": {
+        "@fastify/websocket": "^8.0.0",
+        "fastify": "^5.2.1"
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2",
+        "eslint": "^9.22.0",
+        "eslint-plugin-react": "^7.37.4",
+        "globals": "^16.0.0",
+        "prettier": "^3.2.5",
+        "typescript": "^5.8.2",
+        "typescript-eslint": "^8.26.0"
+    }
 }
