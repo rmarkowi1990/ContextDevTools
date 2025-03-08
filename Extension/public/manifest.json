@@ -1,0 +1,10 @@
+{
+    "manifest_version": 3,
+    "name": "React Context DevTools",
+    "version": "1.0.0",
+    "description": "Follow React Context state changes in real time",
+    "action": {
+        "default_popup": "index.html"
+    },
+    "permissions": []
+}
