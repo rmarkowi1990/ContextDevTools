@@ -6,14 +6,26 @@ import {
     useState,
 } from 'react';
 
+type Message = {
+    provider: string;
+    state: any;
+};
+
 type StateContextType = {
     socket: WebSocket | undefined;
+    updatedProvider: string | undefined;
+    current: any;
+    previous: any;
 };
 
 const StateContext = createContext({} as StateContextType);
 
 export const StateProvider = ({ children }: { children: ReactNode }) => {
-    const [socket, setSocket] = useState<WebSocket | undefined>(undefined);
+    const [socket, setSocket] = useState<StateContextType['socket']>(undefined);
+    const [current, setCurrent] = useState<StateContextType['current']>({});
+    const [previous, setPrevious] = useState<StateContextType['previous']>({});
+    const [updatedProvider, setUpdatedProvider] =
+        useState<StateContextType['updatedProvider']>(undefined);
 
     useEffect(() => {
         if (socket) return;
@@ -21,8 +33,18 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
         const webSocket = new WebSocket('ws://localhost:2761/socket');
 
         webSocket.onopen = () => {
-            console.log('connected to socket');
             setSocket(webSocket);
+        };
+
+        webSocket.onmessage = (event) => {
+            const data: Message = JSON.parse(event.data);
+            const { provider, state } = data;
+
+            setPrevious(current);
+            setCurrent((current: StateContextType['current']) => {
+                return { ...current, [provider]: state };
+            });
+            setUpdatedProvider(provider);
         };
 
         return () => {
@@ -31,7 +53,9 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     }, [socket]);
 
     return (
-        <StateContext.Provider value={{ socket }}>
+        <StateContext.Provider
+            value={{ socket, current, previous, updatedProvider }}
+        >
             {children}
         </StateContext.Provider>
     );
