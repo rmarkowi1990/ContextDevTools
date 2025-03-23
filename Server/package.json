@@ -1,12 +1,15 @@
 {
-    "name": "@contextdevtools/server",
+    "name": "server",
     "version": "1.0.0",
-    "type": "module",
+    "description": "Server for contextDevTools",
+    "main": "index.ts",
     "scripts": {
-        "start": "tsx server.ts"
+        "test": "test",
+        "start": "wrangler dev server.ts"
     },
+    "author": "Rick Markowitz",
+    "license": "ISC",
     "dependencies": {
-        "fastify": "^5.2.1",
-        "@fastify/websocket": "^8.0.0"
+        "hono": "^4.7.5"
     }
 }
